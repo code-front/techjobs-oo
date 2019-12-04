@@ -16,11 +16,20 @@ import java.util.ArrayList;
 public class JobForm {
 
     @NotNull
-    @Size(min=1, message = "Name may not be empty")
+    @Size(min = 1, message = "Name may not be empty")
     private String name;
 
     @NotNull
     private int employerId;
+
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompetenciesId;
+
+    @NotNull
+    private int positionTypeId;
 
     /*
         TODO #3 - Included other fields needed to create a job,
@@ -34,15 +43,14 @@ public class JobForm {
     private ArrayList<PositionType> positionTypes;
 
     public JobForm() {
-
         JobData jobData = JobData.getInstance();
-
         /*
             TODO #4 - populate the other ArrayList collections needed in the view
         */
-
         employers = jobData.getEmployers().findAll();
-
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
     }
 
     public String getName() {
@@ -69,12 +77,29 @@ public class JobForm {
         this.employers = employers;
     }
 
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
     public ArrayList<Location> getLocations() {
         return locations;
     }
 
     public void setLocations(ArrayList<Location> locations) {
         this.locations = locations;
+    }
+
+    public int getCoreCompetenciesId() {
+        return coreCompetenciesId;
+    }
+
+    public void setCoreCompetenciesId(int coreCompetenciesId) {
+        this.coreCompetenciesId = coreCompetenciesId;
     }
 
     public ArrayList<CoreCompetency> getCoreCompetencies() {
@@ -85,6 +110,15 @@ public class JobForm {
         this.coreCompetencies = coreCompetencies;
     }
 
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
+    }
+
     public ArrayList<PositionType> getPositionTypes() {
         return positionTypes;
     }
@@ -92,4 +126,8 @@ public class JobForm {
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
     }
+
 }
+
+
+
